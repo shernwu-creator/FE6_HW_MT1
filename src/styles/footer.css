@@ -1,0 +1,105 @@
+/* ===== 頁尾主容器 ===== */
+.site-footer {
+  background-color: var(--color-parchment-800);
+  color: var(--color-parchment-50);
+  padding: 3rem 1.5rem 1rem;
+  margin-top: 4rem;
+}
+
+/* ===== 四欄網格 ===== */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== 品牌區 ===== */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-logo {
+  height: 35px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-brand h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.15rem;
+}
+
+.footer-info p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #bbb;
+  margin: 0.5rem 0 0;
+}
+
+/* ===== 連結欄位 ===== */
+.footer-links h4,
+.footer-course-info h4 {
+  color: #81c784;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s, padding-left 0.2s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  padding-left: 4px;
+}
+
+/* ===== 專案資訊 ===== */
+.footer-course-info p {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.6;
+  margin: 0.4rem 0;
+}
+
+/* ===== 底部版權 ===== */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #2e4d41;
+  padding-top: 1rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* ===== RWD ===== */
+@media (max-width: 640px) {
+  .site-footer {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .footer-container {
+    gap: 1.5rem;
+  }
+
+  .footer-brand h3 {
+    font-size: 1rem;
+  }
+}

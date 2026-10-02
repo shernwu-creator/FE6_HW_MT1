@@ -9,7 +9,7 @@
   width: 100%;
   height: 85vh; /* Hero 高度 */
   min-height: 550px;
-  background-color: #0d1b15; /* 滑鼠移過去時未選中區域的底色 */
+  background-color: var(--color-evergreen-900); /* 滑鼠移過去時未選中區域的底色 */
   overflow: hidden;
 }
 
@@ -21,7 +21,7 @@
   width: 100%;
   height: 100%;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--color-parchment-100);
   transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
   z-index: 1;
 }
@@ -136,7 +136,7 @@
 
 .slice-country {
   font-size: 0.8rem;
-  background: #2e7d32;
+  background: var(--color-evergreen-800);
   padding: 0.2rem 0.6rem;
   border-radius: 12px;
   font-weight: bold;
@@ -156,7 +156,7 @@
 
 .slice-btn {
   font-size: 0.8rem;
-  color: #81c784;
+  color: var(--color-evergreen-300);
   margin-top: 0.4rem;
   font-weight: bold;
 }
@@ -227,6 +227,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
   align-items: center;
+  color: var(--color-parchment-100);
 }
 @media (max-width: 768px) { .featured-banner { grid-template-columns: 1fr; } }
 .featured-image-wrapper img {
@@ -240,6 +241,7 @@
   margin: 0 auto;
   padding: 0 1.5rem;
   text-align: center;
+  color: var(--color-parchment-100);
 }
 .quiz-buttons {
   display: flex;
@@ -258,14 +260,14 @@
 .quiz-btn {
   padding: 0.6rem 1.2rem;
   border: 1px solid #ccc;
-  background: #fff;
+  background: var(--color-parchment-100);
   border-radius: 20px;
   cursor: pointer;
 }
 .quiz-btn.active {
-  background: #2e7d32;
-  color: #fff;
-  border-color: #2e7d32;
+  background: var(--color-evergreen-800);
+  color: var(--color-parchment-100);
+  border-color: var(--color-evergreen-800);
 }
 .preview-grid {
   display: grid;
@@ -276,7 +278,7 @@
   gap: 1.5rem;
 }
 .preview-card {
-  background: #fff;
+  background: var(--color-parchment-100);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);

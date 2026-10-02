@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import '../styles/navbar.css'
-import Logo from '../../public/Travel_LOGO_0916.png'
+import Logo from '/public/Travel_LOGO_0916.png'
 
 const links = [
   { to: '/', text: '首頁' },
