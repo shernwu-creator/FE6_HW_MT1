@@ -1,0 +1,295 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+/* Hero X 容器 */
+.hero-x-container {
+  position: relative;
+  width: 100%;
+  height: 85vh; /* Hero 高度 */
+  min-height: 550px;
+  background-color: #0d1b15; /* 滑鼠移過去時未選中區域的底色 */
+  overflow: hidden;
+}
+
+/* 4 個對角切片基礎樣式 */
+.x-slice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+  z-index: 1;
+}
+
+/* 背景圖 transition */
+.slice-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+/* 預設暗色遮罩 */
+.slice-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); /* 預設調暗 55% */
+  transition: background 0.4s ease;
+}
+
+/* ----------------------------------------------------
+   關鍵：使用 clip-path 將 100x100% 切成 4 個對角三角形 (X 型)
+---------------------------------------------------- */
+/* 上三角形 */
+.slice-top {
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+}
+
+/* 右三角形 */
+.slice-right {
+  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+}
+
+/* 下三角形 */
+.slice-bottom {
+  clip-path: polygon(100% 100%, 0 100%, 50% 50%);
+}
+
+/* 左三角形 */
+.slice-left {
+  clip-path: polygon(0 0, 0 100%, 50% 50%);
+}
+
+/* ----------------------------------------------------
+   互動邏輯：當容器被 Hover 時，全部變更暗；被 Hover 的該塊變亮加放大
+---------------------------------------------------- */
+/* 當滑鼠進入 hero 區域時，所有區塊再變暗一點 */
+.hero-x-container:hover .slice-overlay {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* 只有被滑鼠滑過的該區塊：變亮、背景放大 */
+.hero-x-container .x-slice:hover {
+  z-index: 2; /* 浮到最上層 */
+}
+
+.hero-x-container .x-slice:hover .slice-overlay {
+  background: rgba(0, 0, 0, 0.15); /* 變亮 (只剩 15% 遮罩) */
+}
+
+.hero-x-container .x-slice:hover .slice-bg {
+  transform: scale(1.08); /* 背景圖微微放大，製造動態感 */
+}
+
+/* ----------------------------------------------------
+   4 個區域的文字定位 (避開中心 X 焦點)
+---------------------------------------------------- */
+.slice-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none; /* 避免文字干擾滑鼠點擊 */
+  transition: transform 0.3s ease;
+}
+
+.x-slice:hover .slice-content {
+  transform: scale(1.05); /* Hover 時文字微幅放大 */
+}
+
+/* 上區文字定位 */
+.content-top {
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 右區文字定位 */
+.content-right {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+/* 下區文字定位 */
+.content-bottom {
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 左區文字定位 */
+.content-left {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+.slice-country {
+  font-size: 0.8rem;
+  background: #2e7d32;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.slice-title {
+  font-size: 1.5rem;
+  margin: 0.4rem 0 0.2rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.slice-desc {
+  font-size: 0.85rem;
+  color: #ddd;
+  margin: 0;
+}
+
+.slice-btn {
+  font-size: 0.8rem;
+  color: #81c784;
+  margin-top: 0.4rem;
+  font-weight: bold;
+}
+
+/* 中心 X 焦點徽章 */
+.x-center-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  background: #1c352d;
+  border: 3px solid #2e7d32;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none; /* 讓點擊能直接穿透至底下的三角形 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.badge-logo {
+  height: 30px;
+  filter: brightness(0) invert(1);
+}
+
+/* ----------------------------------------------------
+   響應式 RWD (手機螢幕太小、角度不適合時改為標準四格網格)
+---------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero-x-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: auto;
+    min-height: 600px;
+  }
+
+  /* 手機端取消多邊形剪裁，變成一般 2x2 方格 */
+  .x-slice {
+    position: relative;
+    clip-path: none !important;
+  }
+
+  .content-top, .content-right, .content-bottom, .content-left {
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .x-center-badge {
+    display: none; /* 手機端隱藏中心徽章 */
+  }
+}
+.featured-banner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (max-width: 768px) { .featured-banner { grid-template-columns: 1fr; } }
+.featured-image-wrapper img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.quiz-section {
+  max-width: 1200px;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+.quiz-buttons {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin: 1.5rem 0 2rem;
+  flex-wrap: wrap;
+  button {
+    transition: all 0.3 ease;
+    transform: scale(1);
+  }
+  button:hover {
+    transform: scale(1.02);
+  }
+}
+.quiz-btn {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.quiz-btn.active {
+  background: #2e7d32;
+  color: #fff;
+  border-color: #2e7d32;
+}
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  /* align-items: center; */
+  /* justify-content: center; */
+  gap: 1.5rem;
+}
+.preview-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: left;
+}
+.preview-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.card-info { padding: 1rem; }
+.country-tag {
+  font-size: 0.75rem;
+  color: #2e7d32;
+  font-weight: bold;
+}

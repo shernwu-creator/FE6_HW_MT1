@@ -1,0 +1,200 @@
+.tour-detail {
+  background: #f8faf8;
+  min-height: 100vh;
+}
+
+/* ===== Banner ===== */
+.banner {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.banner-overlay {
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.banner-country {
+  display: inline-block;
+  background: #2e7d32;
+  padding: 0.25rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+}
+
+.banner h1 {
+  font-size: 2.8rem;
+  margin: 0.2rem 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.banner-sub {
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+/* ===== 內容容器 ===== */
+.tour-detail-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* ===== 概覽 ===== */
+.overview h2,
+.itinerary h2 {
+  color: #1c352d;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  border-left: 4px solid #2e7d32;
+  padding-left: 0.8rem;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.overview-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ov-label {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.ov-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.overview-summary {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-size: 0.8rem;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+}
+
+/* ===== 每日行程 Accordion ===== */
+.itinerary {
+  margin-top: 3rem;
+}
+
+.accordion-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+}
+
+.accordion-item summary {
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  list-style: none;
+  transition: background 0.2s;
+}
+
+.accordion-item summary:hover {
+  background: #f4f8f5;
+}
+
+.accordion-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.day-distance {
+  color: #888;
+  font-size: 0.9rem;
+  margin-left: 0.4rem;
+}
+
+.details-content {
+  padding: 0 1.2rem 1.2rem;
+  border-top: 1px solid #f0f0f0;
+  color: #555;
+  line-height: 1.7;
+}
+
+.details-content p {
+  margin: 0.5rem 0;
+}
+
+/* ===== 底部按鈕 ===== */
+.detail-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.back-btn,
+.gear-link-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.back-btn {
+  background: #fff;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+.back-btn:hover {
+  background: #e8f5e9;
+}
+
+.gear-link-btn {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.gear-link-btn:hover {
+  background: #1b5e20;
+}
+
+/* ===== RWD ===== */
+@media (max-width: 768px) {
+  .banner h1 { font-size: 2rem; }
+  .tour-detail-inner { padding: 2rem 1rem; }
+}

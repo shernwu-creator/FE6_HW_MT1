@@ -1,0 +1,172 @@
+{
+  "routes": [
+    {
+      "id": "tmb",
+      "slug": "tour-du-mont-blanc",
+      "name": "環白朗峰健行",
+      "englishName": "Tour du Mont Blanc",
+      "country": "法國",
+      "countryCode": "FR",
+      "distanceKm": 170,
+      "durationDays": "7 - 11 天",
+      "maxElevationM": 2537,
+      "difficulty": "Hard",
+      "heroImage": "/images/Firefly_BK_1.jpg",
+      "tags": ["阿爾卑斯", "冰川景觀", "多國跨越"],
+      "summary": "圍繞歐洲最高峰白朗峰的經典跨國環線，行經法國、義大利與瑞士，擁攬極致阿爾卑斯冰川地形。",
+      "location": {
+        "lat": 45.9237,
+        "lng": 6.8694,
+        "startPoint": "Chamonix, France"
+      },
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Les Houches 至 Les Contamines",
+          "distance": "16 km",
+          "elevationGain": "+646 m",
+          "description": "從 Les Houches 出發，穿過森林與針葉林帶，遠眺 Bionnassay 冰川。"
+        },
+        {
+          "day": 2,
+          "title": "Les Contamines 至 Croix de la Bonhomme",
+          "distance": "18 km",
+          "elevationGain": "+1316 m",
+          "description": "挑戰陡峭上升，越過古羅馬大道與 Bonhomme 隘口，進入阿爾卑斯高山荒原。"
+        }
+      ]
+    },
+    {
+      "id": "inca-trail",
+      "slug": "inca-trail",
+      "name": "經典印加古道",
+      "englishName": "Classic Inca Trail",
+      "country": "秘魯",
+      "countryCode": "PE",
+      "distanceKm": 43,
+      "durationDays": "4 天 3 夜",
+      "maxElevationM": 4215,
+      "difficulty": "Hard",
+      "heroImage": "/images/Firefly_inca_trail_A.jpg",
+      "tags": ["印加文明", "雲霧林", "馬丘比丘"],
+      "summary": "穿越安第斯山脈的古老石階，途經古印加遺址與高山雲霧林，於太陽門俯瞰馬丘比丘。",
+      "location": {
+        "lat": -13.2583,
+        "lng": -72.2633,
+        "startPoint": "Piscacucho (Km 82), Peru"
+      },
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Km 82 至 Wayllabamba",
+          "distance": "12 km",
+          "elevationGain": "+300 m",
+          "description": "沿著烏魯班巴河步道前行，遠眺 Patallacta 印加遺址。"
+        },
+        {
+          "day": 2,
+          "title": "Wayllabamba 至 Pacaymayo",
+          "distance": "11 km",
+          "elevationGain": "+1200 m",
+          "description": "最艱辛的一天，需攀升至海拔 4,215 公尺的死亡女人隘口 (Dead Woman's Pass)。"
+        }
+      ]
+    },
+    {
+      "id": "milford-track",
+      "slug": "milford-track",
+      "name": "米爾福德步道",
+      "englishName": "Milford Track",
+      "country": "紐西蘭",
+      "countryCode": "NZ",
+      "distanceKm": 53.5,
+      "durationDays": "4 天",
+      "maxElevationM": 1159,
+      "difficulty": "Medium",
+      "heroImage": "/images/Firefly_milford_track_A.jpg",
+      "tags": ["峽灣地形", "溫帶雨林", "巨型瀑布"],
+      "summary": "貫穿冰河切削出的峽谷與紐西蘭溫帶雨林，被讚譽為「世界上最美麗的步道」。",
+      "location": {
+        "lat": -44.7866,
+        "lng": 167.9258,
+        "startPoint": "Glade Wharf, New Zealand"
+      },
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Glade Wharf 至 Clinton Hut",
+          "distance": "5 km",
+          "elevationGain": "+50 m",
+          "description": "搭船抵達起點後，漫步穿過櫸木森林，輕鬆抵達第一座山屋。"
+        }
+      ]
+    },
+    {
+      "id": "kumano-kodo",
+      "slug": "kumano-kodo",
+      "name": "熊野古道 (中邊路)",
+      "englishName": "Kumano Kodo - Nakahechi",
+      "country": "日本",
+      "countryCode": "JP",
+      "distanceKm": 70,
+      "durationDays": "4 - 5 天",
+      "maxElevationM": 800,
+      "difficulty": "Medium",
+      "heroImage": "/images/Firefly_kumano_kodo_A.jpg",
+      "tags": ["世界遺產", "古杉石階", "神社與溫泉"],
+      "summary": "全球僅有的兩條 UNESCO 世界文化遺產朝聖之路之一，感受千年神社與靜謐古杉林的禪意。",
+      "location": {
+        "lat": 33.8403,
+        "lng": 135.7727,
+        "startPoint": "Takijiri-oji, Wakayama, Japan"
+      },
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "滝尻王子 至 近露王子",
+          "distance": "13.6 km",
+          "elevationGain": "+830 m",
+          "description": "從熊野古道的聖域入口「滝尻王子」出發，陡升進入千年巨杉森林。"
+        }
+      ]
+    }
+  ],
+  "safetyTopics": [
+    {
+      "id": 1,
+      "icon": "preparation",
+      "title": "行前準備",
+      "content": "確認天氣、申請入山證、告知留守人、檢查裝備。務必下載離線地圖，並確認手機電量充足。"
+    },
+    {
+      "id": 2,
+      "icon": "fitness",
+      "title": "體能訓練",
+      "content": "行前 1 個月開始負重訓練，每週至少 2 次。模擬實際背負重量，並練習上下坡。"
+    },
+    {
+      "id": 3,
+      "icon": "altitude",
+      "title": "高山症預防",
+      "content": "慢慢上升、多喝水、避免劇烈運動、必要時服用丹木斯。出現頭痛、噁心時立即下降高度。"
+    },
+    {
+      "id": 4,
+      "icon": "lost",
+      "title": "迷途處理",
+      "content": "停下腳步、原地等待、使用離線地圖定位、撥打 112。切勿慌張亂走，保留體力等待救援。"
+    },
+    {
+      "id": 5,
+      "icon": "weather",
+      "title": "天候應變",
+      "content": "山區天氣多變，隨時注意雲層變化。遇雷雨避開稜線與空曠地，遇強風立即下降高度。"
+    },
+    {
+      "id": 6,
+      "icon": "firstaid",
+      "title": "急救常識",
+      "content": "學會處理外傷、扭傷、失溫。隨身攜帶急救包與救命毯，知道如何求救。"
+    }
+  ]
+}

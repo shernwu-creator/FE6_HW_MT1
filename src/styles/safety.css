@@ -1,0 +1,80 @@
+.safety-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.safety-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.safety-header h1 {
+  font-size: 2.2rem;
+  color: #1c352d;
+  margin-bottom: 0.5rem;
+}
+
+.safety-header p {
+  color: #666;
+  font-size: 1.05rem;
+}
+
+/* ===== 主題卡片 ===== */
+.safety-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.safety-card {
+  background: #fff;
+  padding: 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-top: 4px solid #2e7d32;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.safety-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.safety-icon {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #a5d6a7;
+  margin-bottom: 0.5rem;
+}
+
+.safety-card h2 {
+  font-size: 1.3rem;
+  color: #1c352d;
+  margin-bottom: 0.8rem;
+}
+
+.safety-card p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* ===== 緊急聯絡 ===== */
+.emergency-section {
+  background: #fff3e0;
+  border-left: 6px solid #d32f2f;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.emergency-section h2 {
+  color: #d32f2f;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.emergency-grid {
+  display: grid;
+}

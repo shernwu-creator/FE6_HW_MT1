@@ -1,0 +1,49 @@
+--color-evergreen-50: #f1f5f0;
+--color-evergreen-100: #e4ebe0;
+--color-evergreen-200: #c9d7c1;
+--color-evergreen-300: #aec3a2;
+--color-evergreen-400: #93ae84;
+--color-evergreen-500: #779a65;
+--color-evergreen-600: #607b51;
+--color-evergreen-700: #485d3c;
+--color-evergreen-800: #303e28;
+--color-evergreen-900: #181f14;
+--color-evergreen-950: #11160e;
+
+--color-iron-grey-50: #f2f2f3;
+--color-iron-grey-100: #e4e6e7;
+--color-iron-grey-200: #c9cccf;
+--color-iron-grey-300: #afb3b6;
+--color-iron-grey-400: #949a9e;
+--color-iron-grey-500: #798086;
+--color-iron-grey-600: #61676b;
+--color-iron-grey-700: #494d50;
+--color-iron-grey-800: #303336;
+--color-iron-grey-900: #181a1b;
+--color-iron-grey-950: #111213;
+
+--color-parchment-50: #f6f4ee;
+--color-parchment-100: #ede9de;
+--color-parchment-200: #dcd2bc;
+--color-parchment-300: #cabc9b;
+--color-parchment-400: #b9a679;
+--color-parchment-500: #a78f58;
+--color-parchment-600: #867346;
+--color-parchment-700: #645635;
+--color-parchment-800: #433923;
+--color-parchment-900: #211d12;
+--color-parchment-950: #17140c;
+
+:root {
+  --color-evergreen-a10:  #779a651a; /* 透明度 10% */
+  --color-evergreen-a20:  #779a6533; /* 透明度 20% */
+  --color-evergreen-a30:  #779a654d; /* 透明度 30% */
+  --color-evergreen-a40:  #779a6566; /* 透明度 40% */
+  --color-evergreen-a50:  #779a6580; /* 透明度 50% */
+  --color-evergreen-a60:  #779a6599; /* 透明度 60% */
+  --color-evergreen-a70:  #779a65b3; /* 透明度 70% */
+  --color-evergreen-a80:  #779a65cc; /* 透明度 80% */
+  --color-evergreen-a90:  #779a65e6; /* 透明度 90% */
+  --color-evergreen-a100: #779a65ff; /* 透明度 100% (#779a65) */
+}
+

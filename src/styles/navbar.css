@@ -1,0 +1,118 @@
+/* ===== Navbar 容器 ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #1b4332;   /* 深綠，之後可換 */
+  color: white;
+  position: relative;
+  z-index: 100;
+}
+
+/* ===== Logo ===== */
+.navbar-logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+/* ===== 選單（桌機預設橫排） ===== */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar-links a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 當前頁面高亮（NavLink 自動加的 .active） */
+.navbar-links a.active {
+  color: #95d5b2;
+  border-bottom: 2px solid #95d5b2;
+}
+
+/* ===== 漢堡按鈕（桌機預設隱藏） ===== */
+.mobile-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.75rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+}
+
+.mobile-menu:hover {
+  color: #95d5b2;
+}
+
+/* ===== 手機版（768px 以下） ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .navbar-logo img {
+    height: 40px;
+  }
+
+  /* 顯示漢堡按鈕 */
+  .mobile-menu {
+    display: block;
+  }
+
+  /* 選單改成垂直下拉，預設隱藏 */
+  .navbar-links {
+    position: absolute;
+    top: 100%;              /* 貼在 navbar 下方 */
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: #1b4332;
+    max-height: 0;          /* 收合 */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* 展開狀態 */
+  .navbar-links.open {
+    max-height: 400px;      /* 比實際高度大即可 */
+    padding: 0.5rem 0;
+  }
+
+  .navbar-links li {
+    width: 100%;
+  }
+
+  .navbar-links a {
+    display: block;
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-links a.active {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #95d5b2;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+}
