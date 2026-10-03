@@ -1,187 +1,264 @@
-import { useState, useMemo } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  MapContainer,
+  TileLayer,
+  Popup,
+  Polyline,
+  CircleMarker,
+  useMap,
+} from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
 import data from '../data.json'
 import '../styles/map.css'
 
+// 修正 Leaflet 預設圖示路徑
+delete L.Icon.Default.prototype._getIconUrl
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+})
+
+/* ============================================================
+   路線顏色對應
+   ============================================================ */
+const ROUTE_COLORS = {
+  'tmb': '#e67e22',
+  'inca-trail': '#d4a017',
+  'milford-track': '#3498db',
+  'kumano-kodo': '#c0392b',
+}
+
+/* ============================================================
+   地圖控制器：飛到選中路線的邊界
+   ============================================================ */
+function MapController({ flyToTarget }) {
+  const map = useMap()
+
+  useEffect(() => {
+    if (!flyToTarget || !flyToTarget.routePath || flyToTarget.routePath.length === 0) {
+      return
+    }
+    const bounds = L.latLngBounds(flyToTarget.routePath)
+    map.flyToBounds(bounds, {
+      padding: [60, 60],
+      maxZoom: 11,
+      duration: 1.2,
+    })
+  }, [flyToTarget, map])
+
+  return null
+}
+
+/* ============================================================
+   主元件
+   ============================================================ */
 export default function MapGuide() {
-  const routesData = data.routes 
-  // 1. 篩選條件 State 宣告
-  const [selectedCountry, setSelectedCountry] = useState('All');
-  const [selectedDifficulty, setSelectedDifficulty] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const routesData = data.routes
+  const defaultRoute = routesData.find((r) => r.id === 'tmb') || routesData[0]
 
-  // 2. 從原始資料中動態提取「國家清單」與「難易度清單」（供下拉選單使用）
-  const countryOptions = useMemo(() => {
-    const countries = routesData.map((item) => item.country);
-    return ['All', ...Array.from(new Set(countries))];
-  }, []);
+  const [activeRouteId, setActiveRouteId] = useState(defaultRoute.id)
+  const [flyToTarget, setFlyToTarget] = useState(defaultRoute)
 
-  const difficultyOptions = useMemo(() => {
-    const difficulties = routesData.map((item) => item.difficulty);
-    return ['All', ...Array.from(new Set(difficulties))];
-  }, []);
+  // 當前選中的路線（用來渲染右側卡片）
+  const activeRoute =
+    routesData.find((r) => r.id === activeRouteId) || defaultRoute
 
-  // 3. 核心篩選邏輯：使用 useMemo 確保僅在條件變更時重新計算
-  const filteredRoutes = useMemo(() => {
-    return routesData.filter((route) => {
-      // 國家篩選
-      const matchCountry =
-        selectedCountry === 'All' || route.country === selectedCountry;
+  // 切換路線：更新 state + 捲動到地圖區
+  const handleSelectRoute = (route) => {
+    setActiveRouteId(route.id)
+    setFlyToTarget({ ...route }) // 展開新物件觸發 useEffect
 
-      // 難易度篩選
-      const matchDifficulty =
-        selectedDifficulty === 'All' || route.difficulty === selectedDifficulty;
-
-      // 關鍵字搜尋（比對中文名、英文名、簡介）
-      const query = searchQuery.trim().toLowerCase();
-      const matchSearch =
-        query === '' ||
-        route.name.toLowerCase().includes(query) ||
-        route.englishName.toLowerCase().includes(query) ||
-        route.summary.toLowerCase().includes(query);
-
-      return matchCountry && matchDifficulty && matchSearch;
-    });
-  }, [selectedCountry, selectedDifficulty, searchQuery]);
-
-  // 4. 重置所有篩選器
-  const handleResetFilters = () => {
-    setSelectedCountry('All');
-    setSelectedDifficulty('All');
-    setSearchQuery('');
-  };
+    // 捲動到地圖區域（搭配 CSS 的 scroll-margin-top 避免被 navbar 遮住）
+    requestAnimationFrame(() => {
+      document
+        .querySelector('.map-layout')
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }
 
   return (
     <div className="catalog-container">
-      {/* 頁面標題 */}
       <header className="catalog-header">
         <h1>探索全球頂級健行路線</h1>
-        <p>挑選屬於你的下一次冒險，精選 4 國最具代表性的世界級步道</p>
+        <p>點擊下方按鈕切換路線，或點擊地圖標記查看每日行程</p>
       </header>
 
-      {/* 篩選與搜尋工具列 */}
-      <section className="filter-bar">
-        <div className="filter-group">
-          <label htmlFor="search-input">關鍵字搜尋：</label>
-          <input
-            id="search-input"
-            type="text"
-            placeholder="搜尋路線名稱或關鍵字..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="filter-input"
-          />
-        </div>
-
-        <div className="filter-group">
-          <label htmlFor="country-select">國家：</label>
-          <select
-            id="country-select"
-            value={selectedCountry}
-            onChange={(e) => setSelectedCountry(e.target.value)}
-            className="filter-select"
+      {/* ============ 上方：四個路線按鈕 ============ */}
+      <div className="route-tabs">
+        {routesData.map((route) => (
+          <button
+            key={route.id}
+            className={`route-tab ${activeRouteId === route.id ? 'active' : ''}`}
+            onClick={() => handleSelectRoute(route)}
           >
-            {countryOptions.map((country) => (
-              <option key={country} value={country}>
-                {country === 'All' ? '全部國家' : country}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="filter-group">
-          <label htmlFor="difficulty-select">難易度：</label>
-          <select
-            id="difficulty-select"
-            value={selectedDifficulty}
-            onChange={(e) => setSelectedDifficulty(e.target.value)}
-            className="filter-select"
-          >
-            {difficultyOptions.map((diff) => (
-              <option key={diff} value={diff}>
-                {diff === 'All' ? '全部難易度' : diff}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <button onClick={handleResetFilters} className="reset-btn">
-          重置條件
-        </button>
-      </section>
-
-      {/* 結果統計數字 */}
-      <div className="results-count">
-        顯示 <strong>{filteredRoutes.length}</strong> / {routesData.length} 條符合條件的路線
+            <span
+              className="tab-dot"
+              style={{ background: ROUTE_COLORS[route.id] }}
+            />
+            {route.name}
+          </button>
+        ))}
       </div>
 
-      {/* 響應式卡片網格區域 */}
-      {filteredRoutes.length > 0 ? (
-        <div className="routes-grid">
-          {filteredRoutes.map((route) => (
-            <article key={route.id} className="route-card">
-              <div className="card-image-wrapper">
-                <img
-                  src={route.heroImage}
-                  alt={route.name}
-                  loading="lazy"
-                  className="card-image"
-                />
-                <span className={`badge difficulty-${route.difficulty.toLowerCase()}`}>
-                  {route.difficulty}
-                </span>
-                <span className="badge country-badge">{route.country}</span>
+      {/* ============ 下方：左地圖 + 右卡片 ============ */}
+      <div className="map-layout">
+        {/* 左：地圖 */}
+        <section className="map-section">
+          <MapContainer
+            center={[20, 0]}
+            zoom={2}
+            style={{ height: '100%', width: '100%' }}
+            scrollWheelZoom={true}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+
+            <MapController flyToTarget={flyToTarget} />
+
+            {routesData.map((route) => {
+              const isActive = activeRouteId === route.id
+              const color = ROUTE_COLORS[route.id] || '#2e7d32'
+
+              return (
+                <Fragment key={route.id}>
+                  {/* 路線折線 */}
+                  {route.routePath && (
+                    <Polyline
+                      positions={route.routePath}
+                      pathOptions={{
+                        color: isActive ? '#ff5722' : color,
+                        weight: isActive ? 6 : 3,
+                        opacity: isActive ? 1 : 0.35,
+                        dashArray: isActive ? null : '10 6',
+                      }}
+                      eventHandlers={{
+                        click: () => handleSelectRoute(route),
+                      }}
+                    />
+                  )}
+
+                  {/* 每天的行程點 */}
+                  {route.itinerary.map((day) => {
+                    const position =
+                      day.coords || [route.location.lat, route.location.lng]
+                    return (
+                      <CircleMarker
+                        key={`${route.id}-day-${day.day}`}
+                        center={position}
+                        radius={isActive ? 8 : 5}
+                        pathOptions={{
+                          color: '#fff',
+                          weight: isActive ? 2 : 1,
+                          fillColor: isActive ? '#ff5722' : color,
+                          fillOpacity: isActive ? 1 : 0.5,
+                        }}
+                        eventHandlers={{
+                          click: () => handleSelectRoute(route),
+                        }}
+                      >
+                        <Popup>
+                          <div className="map-popup">
+                            {day.image && (
+                              <img
+                                src={day.image}
+                                alt={day.title}
+                                style={{
+                                  width: '100%',
+                                  height: '120px',
+                                  objectFit: 'cover',
+                                  borderRadius: '6px',
+                                  marginBottom: '8px',
+                                }}
+                              />
+                            )}
+                            <h4>
+                              Day {day.day}：{day.title}
+                            </h4>
+                            <p className="popup-distance">
+                              {day.distance} · {day.elevationGain}
+                            </p>
+                            <p className="popup-desc">{day.description}</p>
+                            <Link
+                              to={`/tour/${route.slug}`}
+                              className="popup-link"
+                            >
+                              查看完整行程 →
+                            </Link>
+                          </div>
+                        </Popup>
+                      </CircleMarker>
+                    )
+                  })}
+                </Fragment>
+              )
+            })}
+          </MapContainer>
+        </section>
+
+        {/* 右：當前路線卡片（只有一張，隨 activeRouteId 切換） */}
+        <aside className="map-right">
+          <article className="current-card">
+            <div className="current-card-image">
+              <img src={activeRoute.heroImage} alt={activeRoute.name} />
+              <span className="current-card-country">{activeRoute.country}</span>
+              <span
+                className={`current-card-difficulty difficulty-${activeRoute.difficulty.toLowerCase()}`}
+              >
+                {activeRoute.difficulty}
+              </span>
+            </div>
+
+            <div className="current-card-content">
+              <h2 className="current-card-title">{activeRoute.name}</h2>
+              <p className="current-card-sub">{activeRoute.englishName}</p>
+
+              <p className="current-card-summary">{activeRoute.summary}</p>
+
+              {/* 數據指標 2x2 */}
+              <div className="current-card-stats">
+                <div className="stat-item">
+                  <span className="stat-label">距離</span>
+                  <span className="stat-value">{activeRoute.distanceKm} km</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-label">預估天數</span>
+                  <span className="stat-value">{activeRoute.durationDays}</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-label">最高海拔</span>
+                  <span className="stat-value">{activeRoute.maxElevationM} m</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-label">難易度</span>
+                  <span className="stat-value">{activeRoute.difficulty}</span>
+                </div>
               </div>
 
-              <div className="card-content">
-                <h2 className="card-title">{route.name}</h2>
-                <p className="card-subtitle">{route.englishName}</p>
-
-                <p className="card-summary">{route.summary}</p>
-
-                {/* 路線指標 */}
-                <div className="card-metrics">
-                  <div className="metric">
-                    <span className="metric-label">距離</span>
-                    <span className="metric-value">{route.distanceKm} km</span>
-                  </div>
-                  <div className="metric">
-                    <span className="metric-label">預估天數</span>
-                    <span className="metric-value">{route.durationDays}</span>
-                  </div>
-                  <div className="metric">
-                    <span className="metric-label">最高海拔</span>
-                    <span className="metric-value">{route.maxElevationM} m</span>
-                  </div>
-                </div>
-
-                {/* 標籤 */}
-                <div className="card-tags">
-                  {route.tags.map((tag) => (
-                    <span key={tag} className="tag">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* 前往詳情頁按鈕 */}
-                <Link to={`/tour/${route.slug}`} className="details-btn">
-                  查看詳情與行程 →
-                </Link>
+              {/* 標籤 */}
+              <div className="current-card-tags">
+                {activeRoute.tags.map((tag) => (
+                  <span key={tag} className="current-card-tag">
+                    #{tag}
+                  </span>
+                ))}
               </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        /* 無符合結果時的 Empty State */
-        <div className="empty-state">
-          <h3>查無符合條件的健行路線</h3>
-          <p>請嘗試調整搜尋關鍵字或放寬篩選條件</p>
-          <button onClick={handleResetFilters} className="reset-btn-large">
-            清除所有篩選
-          </button>
-        </div>
-      )}
+
+              {/* 按鈕 */}
+              <Link
+                to={`/tour/${activeRoute.slug}`}
+                className="current-card-btn"
+              >
+                查看完整行程 →
+              </Link>
+            </div>
+          </article>
+        </aside>
+      </div>
     </div>
-  );
+  )
 }

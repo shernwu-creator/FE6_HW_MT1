@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import '../styles/navbar.css'
-import Logo from '/public/Travel_LOGO_0916.png'
+import Logo from '/Travel_LOGO_0916.png'
+import LogoWord from '/logo_word.png'
 
 const links = [
   { to: '/', text: '首頁' },
@@ -17,11 +18,23 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(prev => !prev)
   const closeMenu = () => setIsOpen(false)
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const handleChange = (e) => {
+      if (e.matches) {setIsOpen(false)};
+    }
+    mediaQuery.addEventListener('change',handleChange);
+    return() => {
+      mediaQuery.removeEventListener('change', handleChange);
+    }
+  },[])
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/" onClick={closeMenu}>
-          <img src={Logo} alt="logo" />
+          <img src={Logo} alt="logo" className='navbar-logo-img' />
+          <img src={LogoWord} alt="logo word" className='logo-word' />
         </Link>
       </div>
 

@@ -1,4 +1,11 @@
+@font-face {
+  font-family: 'aayangexing';
+  src: url('/fonts/aayangexing.woff2') format('woff2');
+  font-display: swap;
+}
+
 :root {
+  /* 常綠（主色） */
   --color-evergreen-50: #f1f5f0;
   --color-evergreen-100: #e4ebe0;
   --color-evergreen-200: #c9d7c1;
@@ -11,6 +18,7 @@
   --color-evergreen-900: #181f14;
   --color-evergreen-950: #11160e;
 
+  /* 鐵灰（中性色） */
   --color-iron-grey-50: #f2f2f3;
   --color-iron-grey-100: #e4e6e7;
   --color-iron-grey-200: #c9cccf;
@@ -23,6 +31,7 @@
   --color-iron-grey-900: #181a1b;
   --color-iron-grey-950: #111213;
 
+  /* 羊皮紙（大地色，深色基底主軸） */
   --color-parchment-50: #f6f4ee;
   --color-parchment-100: #ede9de;
   --color-parchment-200: #dcd2bc;
@@ -34,31 +43,101 @@
   --color-parchment-800: #433923;
   --color-parchment-900: #211d12;
   --color-parchment-950: #17140c;
-  /* effect */
-  --transition: all 0.3s linear;
+
+  /* ===== 語意化變數（深色主題） ===== */
+  --bg-base: var(--color-parchment-900);       /* 主背景 */
+  --bg-surface: var(--color-parchment-800);    /* 卡片表面 */
+  --bg-elevated: var(--color-parchment-700);   /* 浮起元素 */
+  --bg-input: var(--color-parchment-950);      /* 輸入框背景 */
+
+  --text-primary: var(--color-parchment-50);   /* 主要文字（最亮） */
+  --text-secondary: var(--color-parchment-200);/* 次要文字 */
+  --text-muted: var(--color-parchment-400);    /* 淡化文字 */
+  --text-inverse: var(--color-parchment-900);  /* 反色文字 */
+
+  --accent: var(--color-evergreen-400);        /* 強調色 */
+  --accent-hover: var(--color-evergreen-300);
+  --accent-strong: var(--color-evergreen-600);
+
+  --border-subtle: var(--color-parchment-700);
+  --border-strong: var(--color-parchment-600);
+
+  /* 效果 */
+  --transition: all 0.3s ease;
   --spacing: 0.25rem;
   --radius: 0.5rem;
-  --light-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  --dark-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
-* ::after ::before {
+
+*, *::before, *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
+
 body {
-    font-family: "Noto Sans HK", "Oswald", sans-serif;
-    background-color: var(--color-parchment-900);
-    line-height: 1.25;
+  /* ⭐ 修正：補上文字顏色與字體 */
+  font-family: "Noto Sans HK", "Oswald", -apple-system, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary); 
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
 }
+
 img {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
+}
+
+/* 表單元素在深色背景下的預設樣式 */
+input, select, textarea, button {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* 標題用裝飾字體 */
+h1, h2, .display-font {
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+  font-weight: normal;
+}
+
+/* 讓 footer 永遠貼底（搭配 Layout 用） */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+}
+
+/* 捲軸深色化 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-parchment-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-parchment-700);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-parchment-600);
 }

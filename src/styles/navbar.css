@@ -3,32 +3,46 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: var(--color-parchment-100); 
-  color: var(--color-parchment-800);
+  padding: 0.75rem 1rem;
+  background-color: var(--color-parchment-700); 
+  color: var(--color-parchment-100);
   position: relative;
   z-index: 100;
+  img.navbar-logo-img {
+    /* filter: inherit(1); */
+    filter: brightness(0) invert(1);
+  }
+  .navbar-logo a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  .logo-word {
+    height: 35px;
+  }
 }
 
 /* ===== Logo ===== */
 .navbar-logo img {
   height: 48px;
   width: auto;
-  display: block;
+  display: inline-block;
+  filter: brightness(0) invert(1);
 }
 
 /* ===== 選單（桌機預設橫排） ===== */
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .navbar-links a {
-  color: var(--color-parchment-700);
+  color: var(--color-parchment-100);
   text-decoration: none;
   font-size: 1rem;
   padding: 0.5rem 0.75rem;
@@ -38,13 +52,13 @@
 
 .navbar-links a:hover {
   background-color: rgba(255, 255, 255, 0.15);
-  color: var(--color-parchment-600);
+  color: var(--color-parchment-200);
 }
 
 /* 當前頁面高亮（NavLink 自動加的 .active） */
 .navbar-links a.active {
-  color: var(--color-evergreen-800);
-  border-bottom: 2px solid #151515;
+  color: var(--color-evergreen-300);
+  border-bottom: 2px solid var(--color-evergreen-300);
 }
 
 /* ===== 漢堡按鈕（桌機預設隱藏） ===== */
@@ -52,7 +66,7 @@
   display: none;
   background: none;
   border: none;
-  color: white;
+  color: var(--color-parchment-200);
   font-size: 1.75rem;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
@@ -60,13 +74,14 @@
 }
 
 .mobile-menu:hover {
-  color: #95d5b2;
+  color: var(--color-parchment-300);
 }
 
 /* ===== 手機版（768px 以下） ===== */
 @media (max-width: 768px) {
   .navbar {
     padding: 0.75rem 1rem;
+    
   }
 
   .navbar-logo img {
@@ -87,7 +102,8 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background-color: #1b4332;
+    background-color: var(--color-parchment-600);
+    opacity: 0.9;
     max-height: 0;          /* 收合 */
     overflow: hidden;
     transition: max-height 0.3s ease;

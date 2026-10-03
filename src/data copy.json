@@ -1,0 +1,123 @@
+{
+  "routes": [
+    {
+      "id": "tmb",
+      "slug": "tour-du-mont-blanc",
+      "name": "環白朗峰健行",
+      "englishName": "Tour du Mont Blanc",
+      "country": "法國",
+      "countryCode": "FR",
+      "distanceKm": 170,
+      "durationDays": "11 天",
+      "maxElevationM": 2537,
+      "difficulty": "Hard",
+      "heroImage": "/images/Firefly_BK_1.jpg",
+      "heroImage2": "/images/Firefly_BK_2.jpg",
+      "heroImage3": "/images/Firefly_TMB_C.jpg",
+      "tags": ["阿爾卑斯", "冰川景觀", "多國跨越"],
+      "summary": "環繞西歐最高峰白朗峰的經典跨國環線，行經法國、義大利與瑞士，擁攬極致阿爾卑斯冰川地形。",
+      "routePath": [
+        [45.9237, 6.8694], [45.8861, 6.7675], [45.8500, 6.7200], [45.8167, 6.7500],
+        [45.7833, 6.9667], [45.8000, 7.0333], [45.8333, 7.0833], [45.9000, 7.0667],
+        [45.9500, 7.0333], [46.0000, 7.0000], [45.9833, 6.9167], [45.9237, 6.8694]
+      ],
+      "itinerary": [
+        { "day": 1, "title": "Les Houches → Les Contamines", "distance": "16-17 km", "elevationGain": "+1000m / -900m", "description": "從 Les Houches 出發，經 Col de Voza，沿河進入 Les Contamines 村莊。觀景重點：Chamonix 山谷開闊景色、Bionnassay 冰川遠景。", "image": "/images/Firefly_TMB_Day_01.jpg", "coords": [45.9065, 6.7712] },
+        { "day": 2, "title": "Les Contamines → Les Chapieux", "distance": "18-19 km", "elevationGain": "+1300m / -980m", "description": "經聖母院教堂與古羅馬路，翻越 Col du Bonhomme 與 Col de la Croix du Bonhomme。觀景重點：雙山口全景、高山草甸與可能殘雪。", "image": "/images/Firefly_TMB_Day_02.jpg", "coords": [45.7018, 6.7286] },
+        { "day": 3, "title": "Les Chapieux → Rifugio Elisabetta", "distance": "14-15 km", "elevationGain": "+1000m / -400m", "description": "翻越 Col de la Seigne (2516m，法義邊境)。觀景重點：首次跨越國界、白朗峰南面全景、Val Veny 冰川。", "image": "/images/Firefly_TMB_Day_03.jpg", "coords": [45.7500, 6.8000] },
+        { "day": 4, "title": "Rifugio Elisabetta → Courmayeur", "distance": "16-17 km", "elevationGain": "+500m / -1500m", "description": "經 Lac Combal 與高處陽台步道。觀景重點：義大利側白朗峰與 Miage 冰川，Courmayeur 是最大城鎮，適合補給。", "image": "/images/Firefly_TMB_Day_04.jpg", "coords": [45.7833, 6.9667] },
+        { "day": 5, "title": "Courmayeur → Rifugio Bonatti", "distance": "12-13 km", "elevationGain": "+1000m / -300m", "description": "陡升後走高處陽台步道。觀景重點：Grandes Jorasses 壯麗岩壁、義大利 Val Ferret 全景，山屋日落超美。", "image": "/images/Firefly_TMB_Day_05.jpg", "coords": [45.8333, 7.0167] },
+        { "day": 6, "title": "Rifugio Bonatti → La Fouly", "distance": "19-20 km", "elevationGain": "+900m / -1400m", "description": "翻越 Grand Col Ferret (2537m，義瑞邊境)。觀景重點：國界山口 360 度全景、進入瑞士溫柔草甸。", "image": "/images/Firefly_TMB_Day_06.jpg", "coords": [45.8500, 7.0500] },
+        { "day": 7, "title": "La Fouly → Champex-Lac", "distance": "15 km", "elevationGain": "+600m / -700m", "description": "較輕鬆的山谷與森林路段。觀景重點：瑞士田園風光、Champex-Lac 湖光山色。", "image": "/images/Firefly_TMB_Day_07.jpg", "coords": [45.9000, 7.1000] },
+        { "day": 8, "title": "Champex-Lac → Trient", "distance": "15-16 km", "elevationGain": "+900m / -1000m", "description": "可走經典 Bovine 路線或 Fenêtre d'Arpette 變體。觀景重點：高山牧場、Trient 冰川遠景。", "image": "/images/Firefly_TMB_Day_08.jpg", "coords": [46.0167, 7.0000] },
+        { "day": 9, "title": "Trient → Tré-le-Champ", "distance": "13-15 km", "elevationGain": "+1000m / -1000m", "description": "翻越 Col de Balme (2191m，瑞法邊境)。觀景重點：重新進入法國、Chamonix 山谷與白朗峰正面遠景。", "image": "/images/Firefly_TMB_Day_09.jpg", "coords": [45.9833, 6.9167] },
+        { "day": 10, "title": "Tré-le-Champ → Refuge La Flégère", "distance": "7-10 km", "elevationGain": "+800m / -300m", "description": "經著名金屬梯子與 Grand Balcon Sud 高處步道，強烈建議繞道 Lac Blanc。觀景重點：Lac Blanc 倒影白朗峰經典明信片景點。", "image": "/images/Firefly_TMB_Day_10.jpg", "coords": [45.9500, 6.8833] },
+        { "day": 11, "title": "Refuge La Flégère → Les Houches", "distance": "16-18 km", "elevationGain": "+700m / -1600m", "description": "繼續 Grand Balcon Sud，可經 Le Brévent 觀景台，最後長下坡回 Les Houches。觀景重點：整段幾乎不間斷的白朗峰正面全景。", "image": "/images/Firefly_TMB_Day_11.jpg", "coords": [45.9237, 6.8694] }
+      ]
+    },
+    {
+      "id": "inca-trail",
+      "slug": "inca-trail",
+      "name": "經典印加古道",
+      "englishName": "Classic Inca Trail",
+      "country": "秘魯",
+      "countryCode": "PE",
+      "distanceKm": 43,
+      "durationDays": "4 天 3 夜",
+      "maxElevationM": 4215,
+      "difficulty": "Hard",
+      "heroImage": "/images/Firefly_inca_trail_A.jpg",
+      "heroImage2": "/images/Firefly_inca_trail_B.jpg",
+      "tags": ["印加文明", "雲霧林", "馬丘比丘"],
+      "summary": "穿越安第斯山脈的古老石階，途經古印加遺址與高山雲霧林，於太陽門俯瞰馬丘比丘。",
+      "routePath": [
+        [-13.2583, -72.2633], [-13.2800, -72.2500], [-13.3100, -72.2300], [-13.3300, -72.2000], [-13.3500, -72.1800]
+      ],
+      "itinerary": [
+        { "day": 1, "title": "KM 82 → Wayllabamba", "distance": "11-13 km", "elevationGain": "+300m", "description": "沿 Urubamba 河河谷前進，地形相對平緩，經過農田與第一個重要印加遺址 Llactapata。觀景重點：河谷開闊風景、雪山遠景。", "image": "/images/Firefly_inca_trail_Day_01.jpg", "coords": [-13.2583, -72.2633] },
+        { "day": 2, "title": "Wayllabamba → Pacaymayo", "distance": "11-12 km", "elevationGain": "+1200m", "description": "清晨出發，持續爬升穿越不同生態帶，抵達全線最高點「死女人山口」(4215m)。觀景重點：山口 360 度壯麗全景，體能挑戰最大的一天。", "image": "/images/Firefly_inca_trail_Day_02.jpg", "coords": [-13.2800, -72.2500] },
+        { "day": 3, "title": "Pacaymayo → Wiñay Wayna", "distance": "15-16 km", "elevationGain": "-950m", "description": "先爬到 Runkurakay 圓形遺址與山口，經 Sayacmarca、Inca 隧道，抵達 Phuyupatamarca，最後下到 Wiñay Wayna。觀景重點：多處精美印加遺址與雲霧林。", "image": "/images/Firefly_inca_trail_Day_03.jpg", "coords": [-13.3100, -72.2300] },
+        { "day": 4, "title": "Wiñay Wayna → 太陽門 → 馬丘比丘", "distance": "5-6 km", "elevationGain": "-300m", "description": "清晨出發，趕在天亮前到達 Inti Punku（太陽門），迎來馬丘比丘的第一眼全景。觀景重點：太陽門俯瞰馬丘比丘的經典視角。", "image": "/images/Firefly_inca_trail_Day_04.jpg", "coords": [-13.3300, -72.2000] }
+      ]
+    },
+    {
+      "id": "milford-track",
+      "slug": "milford-track",
+      "name": "米爾福德步道",
+      "englishName": "Milford Track",
+      "country": "紐西蘭",
+      "countryCode": "NZ",
+      "distanceKm": 53.5,
+      "durationDays": "4 天",
+      "maxElevationM": 1154,
+      "difficulty": "Medium",
+      "heroImage": "/images/Firefly_milford_track_A.jpg",
+      "heroImage2": "/images/Firefly_milford_track_B.jpg",
+      "tags": ["峽灣地形", "溫帶雨林", "巨型瀑布"],
+      "summary": "貫穿冰河切削出的峽谷與紐西蘭溫帶雨林，被讚譽為「世界上最美麗的步道」。",
+      "routePath": [
+        [-44.7866, 167.9258], [-44.7500, 167.9100], [-44.7200, 167.8900], [-44.7000, 167.8700], [-44.6700, 167.9200]
+      ],
+      "itinerary": [
+        { "day": 1, "title": "Glade Wharf → Clinton Hut", "distance": "5 km", "elevationGain": "+100m", "description": "從 Te Anau Downs 搭船到 Glade Wharf 起點。沿 Clinton River 緩行，穿過茂密的山毛櫸森林。觀景重點：清澈河水、原始雨林。", "image": "/images/Firefly_milford_track_Day_01.jpg", "coords": [-44.7866, 167.9258] },
+        { "day": 2, "title": "Clinton Hut → Mintaro Hut", "distance": "16.5-17.5 km", "elevationGain": "+500m", "description": "沿 Clinton River 持續上行，河谷逐漸收窄，兩側高聳岩壁與瀑布不斷出現。觀景重點：冰川雕刻的深谷、層層瀑布。", "image": "/images/Firefly_milford_track_Day_02.jpg", "coords": [-44.7500, 167.9100] },
+        { "day": 3, "title": "Mintaro Hut → Dumpling Hut", "distance": "13-14 km", "elevationGain": "+550m / -970m", "description": "最精彩也最辛苦的一天。從 Mintaro Hut 爬升到 Mackinnon Pass (1154m)，山口有紀念碑與避難所。觀景重點：Mackinnon Pass 壯麗全景、Sutherland Falls。", "image": "/images/Firefly_milford_track_Day_03.jpg", "coords": [-44.7200, 167.8900] },
+        { "day": 4, "title": "Dumpling Hut → Sandfly Point", "distance": "18 km", "elevationGain": "-200m", "description": "沿 Arthur River 穿過茂密雨林，經過歷史船屋、Mackay Falls、Giant Gate Falls。最後抵達 Sandfly Point，搭船進入米爾福德峽灣。", "image": "/images/Firefly_milford_track_Day_04.jpg", "coords": [-44.6700, 167.9200] }
+      ]
+    },
+    {
+      "id": "kumano-kodo",
+      "slug": "kumano-kodo",
+      "name": "熊野古道 (中邊路)",
+      "englishName": "Kumano Kodo - Nakahechi",
+      "country": "日本",
+      "countryCode": "JP",
+      "distanceKm": 70,
+      "durationDays": "5 天 4 夜",
+      "maxElevationM": 800,
+      "difficulty": "Medium",
+      "heroImage": "/images/Firefly_kumano_kodo_A.jpg",
+      "heroImage2": "/images/Firefly_kumano_kodo_B.jpg",
+      "tags": ["世界遺產", "古杉石階", "神社與溫泉"],
+      "summary": "全球僅有的兩條 UNESCO 世界文化遺產朝聖之路之一，感受千年神社與靜謐古杉林的禪意。",
+      "routePath": [
+        [33.8403, 135.7727], [33.8300, 135.7800], [33.8200, 135.7900], [33.8100, 135.8000], [33.8000, 135.8100], [33.6700, 135.8900]
+      ],
+      "itinerary": [
+        { "day": 1, "title": "瀧尻王子 → 高原/近露", "distance": "4-13 km", "elevationGain": "+400m", "description": "從紀伊田邊搭巴士到瀧尻王子，過河後開始陡峭石階與森林步道。觀景重點：古杉林、陡峭石階、高原村的雲海全景。", "image": "/images/Firefly_kumano_kodo_Day_01.jpg", "coords": [33.8403, 135.7727] },
+        { "day": 2, "title": "高原/近露 → 本宮大社/湯之峰", "distance": "20-25 km", "elevationGain": "+800m", "description": "穿越多個王子社、古老茶屋遺跡與深山森林。抵達後可參拜熊野本宮大社，並走到大齋原巨大鳥居。觀景重點：茂密杉檜林、大齋原巨大鳥居。", "image": "/images/Firefly_kumano_kodo_Day_02.jpg", "coords": [33.8300, 135.7800] },
+        { "day": 3, "title": "本宮/湯之峰 → 小口", "distance": "13-15 km", "elevationGain": "+600m", "description": "進入「小雲取越」路段，沿河與山脊前進，途經百間岳展望台，抵達小口村。觀景重點：百間岳展望台的開闊山谷景觀。", "image": "/images/Firefly_kumano_kodo_Day_03.jpg", "coords": [33.8200, 135.7900] },
+        { "day": 4, "title": "小口 → 那智大社/那智瀑布", "distance": "14-15 km", "elevationGain": "+1200m", "description": "最具挑戰的一天「大雲取越」。陡升後穿越山脊，再下到那智山，抵達熊野那智大社與那智瀑布。觀景重點：那智瀑布 (133m) 與三重塔。", "image": "/images/Firefly_kumano_kodo_Day_04.jpg", "coords": [33.8100, 135.8000] },
+        { "day": 5, "title": "那智勝浦周邊探索或返程", "distance": "自由活動", "elevationGain": "-", "description": "早上可再參拜那智大社、走大門坂，或到勝浦港吃鮪魚、泡溫泉。觀景重點：那智瀑布與三重塔的經典構圖、海岸風景。", "image": "/images/Firefly_kumano_kodo_Day_05.jpg", "coords": [33.6700, 135.8900] }
+      ]
+    }
+  ],
+  "safetyTopics": [
+    { "id": 1, "icon": "preparation", "title": "行前準備", "content": "確認天氣、申請入山證、告知留守人、檢查裝備。務必下載離線地圖，並確認手機電量充足。" },
+    { "id": 2, "icon": "fitness", "title": "體能訓練", "content": "行前 1 個月開始負重訓練，每週至少 2 次。模擬實際背負重量，並練習上下坡。" },
+    { "id": 3, "icon": "altitude", "title": "高山症預防", "content": "慢慢上升、多喝水、避免劇烈運動、必要時服用丹木斯。出現頭痛、噁心時立即下降高度。" },
+    { "id": 4, "icon": "lost", "title": "迷途處理", "content": "停下腳步、原地等待、使用離線地圖定位、撥打 112。切勿慌張亂走，保留體力等待救援。" },
+    { "id": 5, "icon": "weather", "title": "天候應變", "content": "山區天氣多變，隨時注意雲層變化。遇雷雨避開稜線與空曠地，遇強風立即下降高度。" },
+    { "id": 6, "icon": "firstaid", "title": "急救常識", "content": "學會處理外傷、扭傷、失溫。隨身攜帶急救包與救命毯，知道如何求救。" }
+  ]
+}

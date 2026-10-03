@@ -1,7 +1,8 @@
 .home-container {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 0rem;
+  overflow: hidden;
 }
 /* Hero X 容器 */
 .hero-x-container {
@@ -11,6 +12,7 @@
   min-height: 550px;
   background-color: var(--color-evergreen-900); /* 滑鼠移過去時未選中區域的底色 */
   overflow: hidden;
+  /* border: 1px solid white; */
 }
 
 /* 4 個對角切片基礎樣式 */
@@ -33,6 +35,7 @@
   height: 100%;
   background-size: cover;
   background-position: center;
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 
@@ -82,7 +85,7 @@
 }
 
 .hero-x-container .x-slice:hover .slice-overlay {
-  background: rgba(0, 0, 0, 0.15); /* 變亮 (只剩 15% 遮罩) */
+  background: rgba(0, 0, 0, 0.1); /* 變亮 (只剩 15% 遮罩) */
 }
 
 .hero-x-container .x-slice:hover .slice-bg {
@@ -150,8 +153,9 @@
 
 .slice-desc {
   font-size: 0.85rem;
-  color: #ddd;
+  color: var(--color-parchment-100);
   margin: 0;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
 
 .slice-btn {
@@ -159,6 +163,7 @@
   color: var(--color-evergreen-300);
   margin-top: 0.4rem;
   font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* 中心 X 焦點徽章 */
@@ -169,13 +174,14 @@
   transform: translate(-50%, -50%);
   width: 90px;
   height: 90px;
-  background: #1c352d;
+  background: var(--color-evergreen-800);
   border: 3px solid #2e7d32;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
   z-index: 10;
   pointer-events: none; /* 讓點擊能直接穿透至底下的三角形 */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -187,6 +193,11 @@
 .badge-logo {
   height: 30px;
   filter: brightness(0) invert(1);
+}
+.badge-logo-word {
+  height: 26px;
+  filter: brightness(0) invert(1);
+  transform: translateX(5%);
 }
 
 /* ----------------------------------------------------
@@ -220,14 +231,38 @@
   }
 }
 .featured-banner {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 4rem 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+  gap: 2rem;
   align-items: center;
   color: var(--color-parchment-100);
+  background-color: var(--color-parchment-700);
+  .featured-content {
+    font-family: 'aayangexing', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    gap: 0.5rem;
+    h2 {
+      font-size: 2rem;
+      margin: 0;
+    }
+  }
+  .featured-image-wrapper {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin-right: 1.5rem;
+  }
 }
 @media (max-width: 768px) { .featured-banner { grid-template-columns: 1fr; } }
 .featured-image-wrapper img {
@@ -238,7 +273,7 @@
 .quiz-section {
   max-width: 1200px;
   width: 90vw;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 0 1.5rem;
   text-align: center;
   color: var(--color-parchment-100);
@@ -263,6 +298,7 @@
   background: var(--color-parchment-100);
   border-radius: 20px;
   cursor: pointer;
+  color: var(--color-evergreen-800);
 }
 .quiz-btn.active {
   background: var(--color-evergreen-800);
@@ -272,24 +308,42 @@
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(90%, 280px), 1fr));
+  width: 100%;
   /* align-items: center; */
   /* justify-content: center; */
   gap: 1.5rem;
+  /* border: 1px solid white; */
 }
+/* @media (max-width: 768px) { .preview-grid {width: 95%;}} */
 .preview-card {
   background: var(--color-parchment-100);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   text-align: left;
+  transition: var(--transition);
+  &:hover {
+    transform: scale(1.02);
+  }
+  .card-link {
+    color: var(--color-evergreen-700);
+    text-decoration: none;
+    &:hover {
+      color: var(--color-evergreen-900);
+    }
+  }
 }
 .preview-card img {
   width: 100%;
   height: 160px;
+  aspect-ratio: 16/9;
   object-fit: cover;
 }
-.card-info { padding: 1rem; }
+.card-info { 
+  padding: 1rem;
+  color: var(--color-parchment-800); 
+}
 .country-tag {
   font-size: 0.75rem;
   color: #2e7d32;

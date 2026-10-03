@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import data from '../data.json'
 import '../styles/home.css'
+import LogoWord from '/logo_word.png'
+
 
 export default function Home() {
   const routes = data.routes
@@ -55,7 +57,7 @@ export default function Home() {
 
         <div className="x-center-badge">
           <img src="/Travel_LOGO_0916.png" alt="Logo" className="badge-logo" />
-          <span>PeakExplore</span>
+          <img src={LogoWord} alt="Logo Word" className="badge-logo-word" />
         </div>
       </section>
 
@@ -75,7 +77,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="featured-image-wrapper">
-          <img src={featuredRoute.heroImage} alt={featuredRoute.name} />
+          <img src={featuredRoute.heroImage3} alt={featuredRoute.name} />
         </div>
       </section>
 
@@ -106,13 +108,13 @@ export default function Home() {
         <div className="preview-grid">
           {filteredPreview.map(route => (
             <div key={route.id} className="preview-card">
-              <img src={route.heroImage} alt={route.name} />
+              <img src={route.heroImage2} alt={route.name} />
               <div className="card-info">
                 <span className="country-tag">{route.country}</span>
                 <h3>{route.name}</h3>
                 <p>{route.distanceKm} km · {route.durationDays}</p>
                 <Link to={`/tour/${route.slug}`} className="card-link">
-                  查看詳情
+                  查看詳情 →
                 </Link>
               </div>
             </div>

@@ -1,204 +1,439 @@
-.guide-container {
-  max-width: 960px;
+/* ============================================================
+   MapGuide 頁面（上方按鈕 + 左地圖 + 右單卡片）
+   ============================================================ */
+
+/* ===== 頁面容器 ===== */
+.catalog-container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 3rem 1.5rem;
+  color: var(--text-primary);
 }
 
-.guide-header {
+.catalog-header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.guide-header h1 {
-  font-size: 2rem;
-  color: #1c352d;
+.catalog-header h1 {
+  font-size: 2.4rem;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+  font-weight: normal;
+  letter-spacing: 2px;
 }
 
-.guide-header p {
-  color: #666;
+.catalog-header p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
 }
 
-/* 頂部數據看板 */
-.weight-dashboard {
+/* ============================================================
+   上方：路線切換按鈕
+   ============================================================ */
+.route-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.route-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.3rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 28px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.route-tab:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-strong);
+  transform: translateY(-2px);
+}
+
+.route-tab.active {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: var(--text-primary);
+  box-shadow: 0 6px 18px rgba(147, 174, 132, 0.35);
+}
+
+.route-tab .tab-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================================
+   下方：左地圖 + 右卡片
+   ============================================================ */
+.map-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 2rem;
+  grid-template-columns: 1fr 400px;
+  gap: 1.5rem;
+  /* 兩邊同高 */
+  align-items: stretch;
+  /* 捲動時保留 navbar 空間 */
+  scroll-margin-top: 90px;
 }
 
-.dashboard-card {
-  background: #f4f8f5;
-  border-left: 4px solid #2e7d32;
-  border-radius: 8px;
-  padding: 1.2rem;
+/* ===== 左：地圖 ===== */
+.map-section {
+  height: 640px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ===== 右：當前卡片（跟地圖同高） ===== */
+.map-right {
+  height: 640px;
+  overflow: hidden;
+}
+
+.current-card {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
 }
 
-.card-label {
-  font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 0.4rem;
+/* 頂部大圖 */
+.current-card-image {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-.card-value {
-  font-size: 1.6rem;
+.current-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.current-card:hover .current-card-image img {
+  transform: scale(1.04);
+}
+
+/* 圖片上的國旗標籤 */
+.current-card-country {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 0.75rem;
   font-weight: bold;
-  color: #1c352d;
+  padding: 0.25rem 0.7rem;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
 }
 
-.weight-highlight {
-  color: #2e7d32;
+/* 難度標籤 */
+.current-card-difficulty {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.25rem 0.7rem;
+  border-radius: 4px;
+  color: #fff;
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
 }
 
-.warning-text {
-  color: #d32f2f;
+.current-card-difficulty.difficulty-hard {
+  background: #c62828;
 }
 
-.success-text {
-  color: #2e7d32;
+.current-card-difficulty.difficulty-medium {
+  background: #e67e22;
 }
 
-/* 操作按鈕與工具列 */
-.control-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 1rem;
-}
-
-.category-tabs {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.tab-btn {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-}
-
-.tab-btn.active {
-  background-color: #2e7d32;
-  color: white;
-  border-color: #2e7d32;
-}
-
-.action-group {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.action-btn {
-  padding: 0.4rem 0.8rem;
-  font-size: 0.85rem;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.action-btn:hover {
-  background-color: #e0e0e0;
-}
-
-.reset-btn-outline {
-  padding: 0.4rem 0.8rem;
-  font-size: 0.85rem;
-  background-color: transparent;
-  color: #d32f2f;
-  border: 1px solid #d32f2f;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.reset-btn-outline:hover {
-  background-color: #ffebee;
-}
-
-/* 裝備列表項目 */
-.gear-list {
+/* 內容區塊（可捲動） */
+.current-card-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.4rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.gear-item {
-  display: flex;
-  align-items: center;
-  padding: 1rem 1.25rem;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
+/* 卡片內捲軸深色化 */
+.current-card-content::-webkit-scrollbar {
+  width: 6px;
+}
+.current-card-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.current-card-content::-webkit-scrollbar-thumb {
+  background: var(--color-parchment-700);
+  border-radius: 3px;
 }
 
-.gear-item:hover {
-  border-color: #a5d6a7;
+/* 標題 */
+.current-card-title {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--text-primary);
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+  font-weight: normal;
+  letter-spacing: 2px;
+  line-height: 1.2;
 }
 
-.gear-item.checked {
-  background-color: #f1f8e9;
-  border-color: #81c784;
+.current-card-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+  letter-spacing: 0.5px;
 }
 
-.checkbox-box input {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  accent-color: #2e7d32;
+/* 簡介 */
+.current-card-summary {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0.3rem 0;
 }
 
-.gear-details {
-  margin-left: 1rem;
+/* 2x2 數據指標 */
+.current-card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.stat-item {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  gap: 0.2rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
 }
 
-.gear-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #333;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
 }
 
-.gear-item.checked .gear-name {
-  text-decoration: line-through;
-  color: #777;
-}
-
-.required-badge {
-  font-size: 0.7rem;
-  background-color: #ffebee;
-  color: #c62828;
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-}
-
-.category-tag {
-  font-size: 0.75rem;
-  color: #888;
-  margin-top: 0.2rem;
-}
-
-.gear-weight {
-  font-weight: bold;
-  color: #2e7d32;
+.stat-value {
   font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+/* 標籤 */
+.current-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.current-card-tag {
+  font-size: 0.75rem;
+  background: rgba(147, 174, 132, 0.12);
+  color: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid rgba(147, 174, 132, 0.3);
+}
+
+/* 底部按鈕（永遠貼在卡片底部） */
+.current-card-btn {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  background: var(--accent-strong);
+  color: var(--text-primary);
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.current-card-btn:hover {
+  background: var(--color-evergreen-500);
+  color: var(--color-evergreen-950);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   Leaflet 地圖深色化
+   ============================================================ */
+.leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9)
+    saturate(0.7);
+}
+
+.leaflet-container {
+  font-family: inherit;
+  background: var(--color-parchment-950) !important;
+}
+
+/* 彈出視窗 */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-close-button {
+  color: var(--text-muted) !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: var(--text-primary) !important;
+}
+
+/* 縮放控制 */
+.leaflet-control-zoom a {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-strong) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: var(--bg-elevated) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(23, 20, 12, 0.8) !important;
+  color: var(--text-muted) !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--accent) !important;
+}
+
+/* 彈出視窗內容 */
+.map-popup {
+  max-width: 240px;
+}
+
+.map-popup h4 {
+  margin: 0 0 0.3rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+}
+
+.map-popup .popup-distance {
+  margin: 0.2rem 0;
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.map-popup .popup-desc {
+  margin: 0.3rem 0;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.popup-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+}
+
+.popup-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* ============================================================
+   RWD
+   ============================================================ */
+@media (max-width: 1024px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .map-section {
+    height: 480px;
+  }
+
+  .map-right {
+    height: auto;
+  }
+
+  .current-card {
+    height: auto;
+  }
+
+  .current-card-content {
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 640px) {
+  .catalog-container {
+    padding: 2rem 1rem;
+  }
+
+  .catalog-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .route-tabs {
+    gap: 0.5rem;
+  }
+
+  .route-tab {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .map-section {
+    height: 400px;
+  }
+
+  .current-card-image {
+    height: 180px;
+  }
+
+  .current-card-title {
+    font-size: 1.3rem;
+  }
 }

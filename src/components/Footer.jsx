@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../styles/footer.css'
+import LogoWord from '/logo_word.png'
+
 
 export default function Footer() {
   return (
@@ -12,7 +14,12 @@ export default function Footer() {
               alt="PeakExplore Logo"
               className="footer-logo"
             />
-            <h3>PeakExplore 全球健行</h3>
+            <img
+              src={LogoWord}
+              alt="Logo word"
+              className="footer-logo-word"
+            />
+            <h3>全球健行</h3>
           </div>
           <p>
             精選 4 國頂級登山健行路線，提供專業行程資訊、互動地圖與裝備規劃工具。
@@ -29,7 +36,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="footer-links">
+        <div className="footer-links footer-links2">
           <h4>精選路線</h4>
           <ul>
             <li><Link to="/tour/tour-du-mont-blanc">環白朗峰</Link></li>
@@ -39,11 +46,11 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="footer-course-info">
+        {/* <div className="footer-course-info">
           <h4>專案資訊</h4>
           <p>前端網站開發人員認證課程專案</p>
           <p>技術棧：React 18 / React Router v6 / Vite</p>
-        </div>
+        </div> */}
       </div>
 
       <div className="footer-bottom">

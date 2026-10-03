@@ -1,25 +1,34 @@
+/* ============================================================
+   Gear 裝備清單頁（深色主題）
+   ============================================================ */
+
 .guide-container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 3rem 1.5rem;
+  color: var(--text-primary);
 }
 
 .guide-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .guide-header h1 {
-  font-size: 2rem;
-  color: #1c352d;
+  font-size: 2.2rem;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+  font-weight: normal;
+  letter-spacing: 2px;
 }
 
 .guide-header p {
-  color: #666;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
 }
 
-/* 頂部數據看板 */
+/* ===== 頂部數據看板 ===== */
 .weight-dashboard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -28,40 +37,47 @@
 }
 
 .dashboard-card {
-  background: #f4f8f5;
-  border-left: 4px solid #2e7d32;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent);
   border-radius: 8px;
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  border-left-color: var(--accent-hover);
 }
 
 .card-label {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 0.4rem;
+  letter-spacing: 1px;
 }
 
 .card-value {
   font-size: 1.6rem;
   font-weight: bold;
-  color: #1c352d;
+  color: var(--text-primary);
 }
 
 .weight-highlight {
-  color: #2e7d32;
+  color: var(--accent);
 }
 
 .warning-text {
-  color: #d32f2f;
+  color: #ff6b6b;
 }
 
 .success-text {
-  color: #2e7d32;
+  color: var(--accent);
 }
 
-/* 操作按鈕與工具列 */
+/* ===== 工具列 ===== */
 .control-bar {
   display: flex;
   flex-wrap: wrap;
@@ -69,7 +85,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #eee;
+  border-bottom: 1px solid var(--border-subtle);
   padding-bottom: 1rem;
 }
 
@@ -81,18 +97,25 @@
 
 .tab-btn {
   padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
-  background: #fff;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-secondary);
   border-radius: 20px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s;
+  font-family: inherit;
+}
+
+.tab-btn:hover {
+  border-color: var(--accent-strong);
+  color: var(--text-primary);
 }
 
 .tab-btn.active {
-  background-color: #2e7d32;
-  color: white;
-  border-color: #2e7d32;
+  background-color: var(--accent-strong);
+  color: var(--text-primary);
+  border-color: var(--accent-strong);
 }
 
 .action-group {
@@ -103,31 +126,38 @@
 .action-btn {
   padding: 0.4rem 0.8rem;
   font-size: 0.85rem;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
 }
 
 .action-btn:hover {
-  background-color: #e0e0e0;
+  background-color: var(--color-parchment-600);
+  border-color: var(--color-parchment-500);
 }
 
 .reset-btn-outline {
   padding: 0.4rem 0.8rem;
   font-size: 0.85rem;
   background-color: transparent;
-  color: #d32f2f;
-  border: 1px solid #d32f2f;
+  color: #ff8a8a;
+  border: 1px solid #b52e2e;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
 }
 
 .reset-btn-outline:hover {
-  background-color: #ffebee;
+  background-color: rgba(211, 47, 47, 0.15);
+  border-color: #ff6b6b;
 }
 
-/* 裝備列表項目 */
+/* ===== 裝備列表 ===== */
 .gear-list {
   display: flex;
   flex-direction: column;
@@ -138,27 +168,28 @@
   display: flex;
   align-items: center;
   padding: 1rem 1.25rem;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
 }
 
 .gear-item:hover {
-  border-color: #a5d6a7;
+  border-color: var(--accent-strong);
+  transform: translateX(3px);
 }
 
 .gear-item.checked {
-  background-color: #f1f8e9;
-  border-color: #81c784;
+  background-color: rgba(96, 123, 81, 0.2);
+  border-color: var(--accent-strong);
 }
 
 .checkbox-box input {
   width: 18px;
   height: 18px;
   cursor: pointer;
-  accent-color: #2e7d32;
+  accent-color: var(--accent-strong);
 }
 
 .gear-details {
@@ -171,34 +202,54 @@
 .gear-name {
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: color 0.2s;
 }
 
 .gear-item.checked .gear-name {
   text-decoration: line-through;
-  color: #777;
+  color: var(--text-muted);
 }
 
 .required-badge {
   font-size: 0.7rem;
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: rgba(198, 40, 40, 0.2);
+  color: #ff8a8a;
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
+  border: 1px solid rgba(198, 40, 40, 0.4);
 }
 
 .category-tag {
   font-size: 0.75rem;
-  color: #888;
+  color: var(--text-muted);
   margin-top: 0.2rem;
+  letter-spacing: 1px;
 }
 
 .gear-weight {
   font-weight: bold;
-  color: #2e7d32;
+  color: var(--accent);
   font-size: 0.95rem;
+}
+
+/* ===== RWD ===== */
+@media (max-width: 640px) {
+  .guide-container {
+    padding: 2rem 1rem;
+  }
+  .guide-header h1 {
+    font-size: 1.6rem;
+  }
+  .control-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .action-group {
+    justify-content: space-between;
+  }
 }

@@ -1,7 +1,12 @@
+/* ============================================================
+   Safety 登山安全頁（深色主題）
+   ============================================================ */
+
 .safety-container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
+  color: var(--text-primary);
 }
 
 .safety-header {
@@ -10,13 +15,16 @@
 }
 
 .safety-header h1 {
-  font-size: 2.2rem;
-  color: #1c352d;
+  font-size: 2.4rem;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+  font-weight: normal;
+  letter-spacing: 3px;
 }
 
 .safety-header p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 1.05rem;
 }
 
@@ -29,52 +37,111 @@
 }
 
 .safety-card {
-  background: #fff;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-top: 4px solid var(--accent);
   padding: 1.8rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  border-top: 4px solid #2e7d32;
-  transition: transform 0.25s, box-shadow 0.25s;
+  transition: transform 0.25s, box-shadow 0.25s, border-top-color 0.25s;
 }
 
 .safety-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-lg);
+  border-top-color: var(--accent-hover);
 }
 
 .safety-icon {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #a5d6a7;
+  color: var(--accent-strong);
   margin-bottom: 0.5rem;
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+  letter-spacing: 2px;
 }
 
 .safety-card h2 {
   font-size: 1.3rem;
-  color: #1c352d;
+  color: var(--text-primary);
   margin-bottom: 0.8rem;
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+  font-weight: normal;
+  letter-spacing: 2px;
 }
 
 .safety-card p {
-  color: #555;
-  line-height: 1.7;
+  color: var(--text-secondary);
+  line-height: 1.8;
   font-size: 0.95rem;
 }
 
 /* ===== 緊急聯絡 ===== */
 .emergency-section {
-  background: #fff3e0;
-  border-left: 6px solid #d32f2f;
+  background: rgba(211, 47, 47, 0.08);
+  border: 1px solid rgba(211, 47, 47, 0.3);
+  border-left: 6px solid #c62828;
   border-radius: 12px;
   padding: 2rem;
 }
 
 .emergency-section h2 {
-  color: #d32f2f;
+  color: #ff8a8a;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
+  font-family: 'aayangexing', 'Noto Sans HK', sans-serif;
+  font-weight: normal;
+  letter-spacing: 2px;
 }
 
 .emergency-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.em-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.em-item:hover {
+  border-color: #c62828;
+  transform: translateY(-3px);
+}
+
+.em-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.em-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6b6b;
+  font-family: 'Oswald', 'Noto Sans HK', sans-serif;
+  letter-spacing: 2px;
+}
+
+/* ===== RWD ===== */
+@media (max-width: 640px) {
+  .safety-container {
+    padding: 2rem 1rem;
+  }
+  .safety-header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+  .safety-grid {
+    grid-template-columns: 1fr;
+  }
+  .em-number {
+    font-size: 1.3rem;
+  }
 }
