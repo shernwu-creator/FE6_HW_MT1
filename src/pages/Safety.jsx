@@ -30,15 +30,15 @@ export default function Safety() {
           </div>
           <div className="em-item">
             <span className="em-label">消防</span>
-            <span className="em-number">119</span>
+            <span className="em-number">999</span>
           </div>
           <div className="em-item">
             <span className="em-label">警察</span>
-            <span className="em-number">110</span>
+            <span className="em-number">999</span>
           </div>
           <div className="em-item">
             <span className="em-label">國家搜救</span>
-            <span className="em-number">0800-000-000</span>
+            <span className="em-number">HKSOS(App)或致電 999</span>
           </div>
         </div>
       </section>
