@@ -45,7 +45,7 @@ export default function Navbar() {
             <NavLink
               to={link.to}
               onClick={closeMenu}
-              className={({ isActive }) => (isActive ? 'active' : '')}
+              // className={({ isActive }) => (isActive ? 'active' : '')}
             >
               {link.text}
             </NavLink>

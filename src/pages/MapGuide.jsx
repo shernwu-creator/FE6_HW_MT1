@@ -43,8 +43,8 @@ function MapController({ flyToTarget }) {
     }
     const bounds = L.latLngBounds(flyToTarget.routePath)
     map.flyToBounds(bounds, {
-      padding: [60, 60],
-      maxZoom: 11,
+      padding: [100, 100],
+      maxZoom: 10,
       duration: 1.2,
     })
   }, [flyToTarget, map])
