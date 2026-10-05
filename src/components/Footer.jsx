@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../styles/footer.css'
 import LogoWord from '/logo_word.png'
+import Logo from '/Travel_LOGO_0916.png'
 
 
 export default function Footer() {
@@ -10,7 +11,7 @@ export default function Footer() {
         <div className="footer-info">
           <div className="footer-brand">
             <img
-              src="/Travel_LOGO_0916.png"
+              src={Logo}
               alt="PeakExplore Logo"
               className="footer-logo"
             />

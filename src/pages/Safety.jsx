@@ -1,4 +1,4 @@
-import data from '../data.json'
+import data from '../data'
 import '../styles/safety.css'
 
 export default function Safety() {

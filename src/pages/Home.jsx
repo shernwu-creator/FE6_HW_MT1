@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import data from '../data.json'
+import data from '../data'
 import '../styles/home.css'
 import LogoWord from '/logo_word.png'
+import Logo from '/Travel_LOGO_0916.png'
 
 
 export default function Home() {
@@ -56,7 +57,7 @@ export default function Home() {
         ))}
 
         <div className="x-center-badge">
-          <img src="/Travel_LOGO_0916.png" alt="Logo" className="badge-logo" />
+          <img src={Logo} alt="Logo" className="badge-logo" />
           <img src={LogoWord} alt="Logo Word" className="badge-logo-word" />
         </div>
       </section>

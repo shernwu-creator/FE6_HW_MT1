@@ -10,7 +10,7 @@ import {
 } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
-import data from '../data.json'
+import data from '../data'
 import '../styles/map.css'
 
 // 修正 Leaflet 預設圖示路徑

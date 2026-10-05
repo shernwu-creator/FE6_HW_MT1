@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import data from '../data.json'
+import data from '../data'
 import '../styles/tour-detail.css'
 
 export default function TourDetail() {
