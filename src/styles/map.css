@@ -85,13 +85,15 @@
   grid-template-columns: 1fr 400px;
   gap: 1.5rem;
   /* 兩邊同高 */
-  align-items: stretch;
+  /* align-items: stretch; */
+  align-items: start;
   /* 捲動時保留 navbar 空間 */
   scroll-margin-top: 90px;
 }
 
 /* ===== 左：地圖 ===== */
 .map-section {
+  position: relative;
   height: 640px;
   border-radius: 12px;
   overflow: hidden;
@@ -101,7 +103,7 @@
 
 /* ===== 右：當前卡片（跟地圖同高） ===== */
 .map-right {
-  height: 640px;
+  height: auto;
   overflow: hidden;
 }
 
@@ -389,6 +391,106 @@
 .popup-link:hover {
   color: var(--accent-hover);
   text-decoration: underline;
+}
+
+/* ============================================================
+   每日行程浮動卡（取代 Leaflet popup）
+   固定在地圖左下角，內容過長時於卡片內捲動，
+   不會自動平移地圖，因此路線不會被擠壓、也不會被裁切。
+   ============================================================ */
+.map-day-card {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 1200; /* 高於 Leaflet 控制項（z-index: 1000） */
+  display: flex;
+  flex-direction: column;
+  width: min(300px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: map-day-card-in 0.18s ease-out;
+}
+
+@keyframes map-day-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.map-day-card-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0.9rem 1rem 1rem;
+}
+
+/* 卡片內捲軸深色化 */
+.map-day-card-body::-webkit-scrollbar {
+  width: 6px;
+}
+.map-day-card-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.map-day-card-body::-webkit-scrollbar-thumb {
+  background: var(--color-parchment-700);
+  border-radius: 3px;
+}
+
+/* 卡片內的 popup 內容沿用既有文字樣式，但不受 popup 寬度限制 */
+.map-day-card .map-popup {
+  max-width: none;
+}
+
+/* 路線名稱標籤 */
+.map-day-route {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.map-day-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+/* 關閉按鈕 */
+.map-day-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.map-day-close:hover {
+  background: var(--accent-strong);
 }
 
 /* ============================================================

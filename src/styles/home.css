@@ -85,7 +85,7 @@
 }
 
 .hero-x-container .x-slice:hover .slice-overlay {
-  background: rgba(0, 0, 0, 0.1); /* 變亮 (只剩 15% 遮罩) */
+  background: rgba(0, 0, 0, 0.1); 
 }
 
 .hero-x-container .x-slice:hover .slice-bg {
